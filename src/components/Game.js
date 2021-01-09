@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 
 import cookieSrc from "../cookie.svg";
+import cursor from "../cursor.png";
 import Item from "./Item";
 import {GameContext} from './GameContext';
 import {items} from '../data';
@@ -20,11 +21,6 @@ const Game = () => {
   const incrementCookies = () => {
     setNumCookies((c) => c + 1);
   };
-
- 
-
-
-
 
   React.useEffect(() => {
     document.title = `${numCookies} cookies - Cookie Clicker Workshop`;
@@ -51,7 +47,6 @@ const Game = () => {
 
 
 
-
   return (
     <Wrapper>
       <GameArea>
@@ -62,6 +57,21 @@ const Game = () => {
         </Indicator>
         <Button onClick={incrementCookies}>
           <Cookie src={cookieSrc} />
+          <Cookie />
+          <CursorContainer>
+            <Cursor src={cursor} />
+            <Cursor src={cursor} />
+            <Cursor src={cursor} />
+            <Cursor src={cursor} />
+            <Cursor src={cursor} />
+            <Cursor src={cursor} />
+            <Cursor src={cursor} />
+            <Cursor src={cursor} />
+            <Cursor src={cursor} />
+            <Cursor src={cursor} />
+
+          </CursorContainer>
+          
         </Button>
       </GameArea>
 
@@ -111,6 +121,7 @@ const Button = styled.button`
   background: transparent;
   cursor: pointer;
   transform-origin: center center;
+  position: relative;
 
   &:active {
     transform: scale(0.9);
@@ -118,8 +129,34 @@ const Button = styled.button`
 `;
 
 const Cookie = styled.img`
-  width: 200px;
+  position: absolute;
+  width: 300px;
+  margin-left: -150px;
+  padding: 40px
+
 `;
+
+const Cursor = styled.img`
+  position: absolute;
+  transform: scaleY(-1);
+  width: 30px;
+`;
+
+const CursorContainer = styled.div`
+    position: absolute;
+    transform-origin: 50% 150px;
+    line-height: 1;
+    animation: Cursor-Spin  50s linear infinite;
+
+@keyframes Cursor-Spin {
+  from{
+      transform: rotate(0);
+  }
+  to{
+      transform: rotate(360deg) ;
+  }
+  }
+`
 
 const ItemArea = styled.div`
   height: 100%;

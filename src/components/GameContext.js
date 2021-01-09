@@ -45,13 +45,13 @@ export const GameProvider = ({ children }) => {
 
         const stopTime = JSON.parse(localStorage.getItem('stopTime'))
     
-        const timeDiff =  - stopTime + Date.now();
+        const timeDiff =  Date.now() - stopTime ;
 
-        console.log(timeDiff, 'timeDiff')
+        //console.log(timeDiff, 'timeDiff')
 
         setNumCookies(numCookies + (Math.floor(timeDiff / 1000)* calculateCookiesPerSecond(purchasedItems)));
 
-        console.log(numCookies, 'cookies')
+        //console.log(numCookies, 'cookies')
 
         window.addEventListener('beforeunload', handleCloseTab); 
     
